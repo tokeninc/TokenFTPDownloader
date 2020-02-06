@@ -29,6 +29,7 @@ bintray {
     pkg {
         repo = 'TokenAndroidLibs'
         name = 'TokenFTPDownloader'
+        userOrg = 'token'
         description = "http://104.155.58.141/pos-projects/sw/ftp-file-download"
         publicDownloadNumbers = true
         licenses = ['Apache-2.0']
