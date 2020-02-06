@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tokeninc.ftpservice">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application>
+        <activity android:name="com.tokeninc.ftpservice.ui.DiskPermissionActivity"/>
+        <service android:name="com.tokeninc.ftpservice.service.DownloadManager"/>
+    </application>
+</manifest>

@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation group: 'commons-net', name: 'commons-net', version: '3.6'
+    implementation 'androidx.lifecycle:lifecycle-service:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'androidx.concurrent:concurrent-futures:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-service:2.2.0'
+    implementation ('androidx.work:work-runtime:2.3.0'){
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+}
+
+apply from : 'publish.gradle'
+
+

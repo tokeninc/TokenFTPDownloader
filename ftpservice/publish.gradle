@@ -1,0 +1,45 @@
+apply plugin: 'com.jfrog.bintray'
+
+group 'com.tokeninc.ftpdownload'
+version '1.0.0'
+
+tasks.withType(Javadoc).all {
+    enabled = false
+}
+
+project.ext {
+    mavGitUrl = 'https://github.com/tokeninc/TokenFTPDownloader.git'
+    mavProjectName = 'Token FTP Downloader'
+    mavLibraryLicenses = ["Apache-2.0":'http://www.apache.org/licenses/LICENSE-2.0.txt']
+    mavLibraryDescription = "Token FTP Downloader"
+    mavPublishToMavenLocal = true
+    mavSiteUrl = 'https://github.com/tokeninc/TokenFTPDownloader'
+}
+
+def properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("userName")
+    key = properties.getProperty("key")
+    publications = ['mavenPublish']
+//    configurations = ['archives']
+    override = true
+
+    pkg {
+        repo = 'TokenAndroidLibs'
+        name = 'TokenFTPDownloader'
+        description = "http://104.155.58.141/pos-projects/sw/ftp-file-download"
+        publicDownloadNumbers = true
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/tokeninc/TokenFTPDownloader.git'
+        version {
+            name = this.version
+            desc = "Version ${this.version}"
+            released = new Date()
+            vcsTag = this.version
+        }
+    }
+}
+
+apply from: 'https://raw.githubusercontent.com/sky-uk/gradle-maven-plugin/master/gradle-mavenizer.gradle'
